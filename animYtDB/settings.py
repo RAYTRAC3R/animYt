@@ -20,12 +20,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-!1d2(n-$ji!ry_)*yxbeo=-@etwhjj0$d#u^!vfbe%9uh)vt5s"
+#SECRET_KEY = "django-insecure-!1d2(n-$ji!ry_)*yxbeo=-@etwhjj0$d#u^!vfbe%9uh)vt5s"
+
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+SECRET_KEY = os.environ["ANIMYT_SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [ ]
 
 
 # Application definition
@@ -116,7 +122,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
+STATIC_ROOT = BASE_DIR / 'productionfiles'
+
 STATIC_URL = "static/"
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'mystaticfiles'
+]
 
 MEDIA_ROOT = "/media/"
 
