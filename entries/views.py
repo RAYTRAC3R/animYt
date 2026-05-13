@@ -6,6 +6,9 @@ from django.template import loader
 
 from .models import Creator, Entry
 
+def index(request):
+    return HttpResponse("Hello, Fly!")
+
 def creator(request, creator_id):
     creator_object = get_object_or_404(Creator, pk=creator_id)
     context = {
