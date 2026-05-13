@@ -32,9 +32,9 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 DEBUG = True
 
 APP_NAME = os.environ.get("FLY_APP_NAME")
-ALLOWED_HOSTS = ["animyt.fly.dev"]
+ALLOWED_HOSTS = [".animyt.fly.dev"]
 INTERNAL_IPS = ["127.0.0.1"]
-CSRF_TRUSTED_ORIGINS = ["animyt.fly.dev"]
+CSRF_TRUSTED_ORIGINS = [".animyt.fly.dev"]
 
 
 # Application definition
