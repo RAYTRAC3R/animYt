@@ -27,4 +27,6 @@ RUN python manage.py collectstatic --noinput
 
 EXPOSE 8000
 
+RUN chmod +x /code/manage.py
+
 CMD ["gunicorn","--bind",":8000","--workers","2","--worker-class","uvicorn.workers.UvicornWorker","animYtDB.asgi"]
