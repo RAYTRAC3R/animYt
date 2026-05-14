@@ -31,7 +31,7 @@ SECRET_KEY = os.environ["ANIMYT_SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ ]
+ALLOWED_HOSTS = [ raytrac3r.pythonanywhere.com ]
 
 
 # Application definition
