@@ -26,10 +26,10 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-SECRET_KEY = os.environ["SECRET_KEY"]
+SECRET_KEY = os.environ["ANIMYT_SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [ ]
 
