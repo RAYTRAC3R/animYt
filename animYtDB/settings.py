@@ -29,9 +29,9 @@ load_dotenv()
 SECRET_KEY = os.environ["ANIMYT_SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = [ raytrac3r.pythonanywhere.com ]
+ALLOWED_HOSTS = [ "raytrac3r.pythonanywhere.com" ]
 
 
 # Application definition
