@@ -31,8 +31,8 @@ SECRET_KEY = os.environ["ANIMYT_SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [ "raytrac3r.pythonanywhere.com" ]
-CSRF_TRUSTED_ORIGINS = [ "raytrac3r.pythonanywhere.com" ]
+ALLOWED_HOSTS = [ "raytrac3r.pythonanywhere.com", "127.0.0.1" ]
+CSRF_TRUSTED_ORIGINS = [ "https://raytrac3r.pythonanywhere.com" ]
 
 # Application definition
 

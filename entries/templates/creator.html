@@ -27,7 +27,7 @@
 				<div class="row">
 					<div class="col" style="margin:10px">
 					{% if creator.thumbnail %}
-						<img class="pfp float-left" src="{{ creator.thumbnail.url }}">
+						<img class="pfp float-left" src="{{ creator.thumbnail }}">
 					{% endif %}
 					</div>
 				</div>
@@ -63,7 +63,7 @@
 		{% for x in memes %}
 			<div class="row" style="margin:10px">
 				{% if x.thumbnail %}
-					<div class="col" style="margin:auto"><a href="/entry/{{x.id}}"><img class="thumbnail float-left" src="{{ x.thumbnail.url }}"></a></div>
+					<div class="col" style="margin:auto"><a href="/entry/{{x.id}}"><img class="thumbnail float-left" src="{{ x.thumbnail }}"></a></div>
 				{% endif %}
 				<div class="col" style="margin:auto"><a href="/entry/{{x.id}}">{{ x }}</a></div>
 				<div class="col" style="margin:auto"><p>{{ x.category }}</p></div>

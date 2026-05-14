@@ -5,7 +5,7 @@ class Creator(models.Model):
     name = models.CharField(max_length=32)
     added_date = models.DateTimeField("addition date")
     link = models.URLField()
-    thumbnail = models.ImageField(null=True, blank=True, upload_to="thumbnails/creators/%Y/%m/%d")
+    thumbnail = models.URLField(null=True, blank=True)
     
     ACTIVE = "Active" # Videos within the past year.
     MIA = "Missing / Gone" # Total inactivity across all accounts, with no information.
@@ -54,7 +54,7 @@ class Entry(models.Model):
     entry_name = models.CharField(max_length=320)
     added_date = models.DateTimeField("addition date")
     upload_date = models.DateField("original upload date")
-    thumbnail = models.ImageField(null=True, blank=True, upload_to="thumbnails/entries/%Y/%m/%d")
+    thumbnail = models.URLField(null=True, blank=True)
     link = models.URLField()
     original_meme = models.ForeignKey('self', blank=True, on_delete=models.SET_NULL, null=True, related_name='derived_meme')
     related_memes = models.ManyToManyField('self', blank=True)

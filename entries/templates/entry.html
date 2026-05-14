@@ -31,7 +31,7 @@
 				<div class="row">
 					<div class="col" style="margin:10px">
 					{% if entry.thumbnail %}
-						<img class="thumbnail-large float-left" src="{{ entry.thumbnail.url }}">
+						<img class="thumbnail-large float-left" src="{{ entry.thumbnail }}">
 					{% endif %}
 					</div>
 				</div>
@@ -81,7 +81,7 @@
 		{% for x in related_entries %}
 			<div class="row" style="margin:10px">
 				{% if x.thumbnail %}
-					<div class="col" style="margin:auto"><a href="/entry/{{x.id}}"><img class="thumbnail float-left" src="{{ x.thumbnail.url }}"></a></div>
+					<div class="col" style="margin:auto"><a href="/entry/{{x.id}}"><img class="thumbnail float-left" src="{{ x.thumbnail }}"></a></div>
 				{% endif %}
 				<div class="col" style="margin:auto"><a href="/entry/{{x.id}}">{{ x }}</a></div>
 				<div class="col" style="margin:auto"><p>{{ x.category }}</p></div>
