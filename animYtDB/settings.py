@@ -32,7 +32,7 @@ SECRET_KEY = os.environ["ANIMYT_SECRET_KEY"]
 DEBUG = False
 
 ALLOWED_HOSTS = [ "raytrac3r.pythonanywhere.com" ]
-
+CSRF_TRUSTED_ORIGINS = [ "raytrac3r.pythonanywhere.com" ]
 
 # Application definition
 
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -125,6 +126,9 @@ USE_TZ = True
 STATIC_ROOT = BASE_DIR / 'productionfiles'
 
 STATIC_URL = "static/"
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 STATICFILES_DIRS = [
     BASE_DIR / 'mystaticfiles'
