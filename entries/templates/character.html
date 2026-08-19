@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Entry - {{ entry.entry_name }}</title>
+  <title>Character - {{ character.name }}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -11,10 +11,6 @@
   <style>
   .thumbnail {
     height: 256px;
-  }
-  
-  .thumbnail-large {
-    height: 384px;
   }
   
   .pfp{
@@ -30,8 +26,8 @@
 			<div class="jumbotron">
 				<div class="row">
 					<div class="col" style="margin:10px">
-					{% if entry.thumbnail %}
-						<img class="thumbnail-large float-left" src="{{ entry.thumbnail }}">
+					{% if character.thumbnail %}
+						<img class="pfp float-left" src="{{ character.thumbnail }}">
 					{% endif %}
 					</div>
 				</div>
@@ -41,43 +37,21 @@
 					<tbody>
 					  <tr>
 						<th>ID #</th>
-						<td>{{ entry.id }}</td>
+						<td>{{ character.id }}</td>
 					  </tr>
 					  <tr>
-						<th>Category</th>
-						<td>{{ entry.category }}</td>
-					  </tr>
-					  <tr>
-						<th>Title</th>
-						<td>{{ entry.entry_name }}</td>
-					  </tr>
-					  <tr>
-						<th>Animator</th>
-						<td><a href="/creator/{{entry.creator.id}}">{{ entry.creator }}</a></td>
-					  </tr>
-					  <tr>
-						<th>Character(s)</th>
-						<td>
-							{% for x in characters %}
-								<a href="/character/{{x.id}}">{{ x }}</a><br>
-							{% endfor %}
-						</td>
-					  </tr>
-					  <tr>
-						<th>Original Meme</th>
-						<td><a href="/entry/{{entry.original_meme.id}}">{{ entry.original_meme }}</a></td>
+						<th>Name</th>
+						<td>{{ character.name }}</td>
 					  </tr>
 					  <tr>
 						<th>Link</th>
-						<td><a href="{{ entry.link }}">Video Link</a></td>
-					  </tr>
-					  <tr>
-						<th>Original Upload Date</th>
-						<td>{{ entry.upload_date }}</td>
+						<td>
+							<a href="{{ character.link }}">More Info</a>
+						</td>
 					  </tr>
 					  <tr>
 						<th>Addition Date</th>
-						<td>{{ entry.added_date }}</td>
+						<td>{{ character.added_date }}</td>
 					  </tr>
 					</tbody>
 					</table>
@@ -86,7 +60,7 @@
 			</div>
 		</div>
 		<div class="jumbotron" style="margin:auto">
-		{% for x in related_entries %}
+		{% for x in memes %}
 			<div class="row" style="margin:10px">
 				{% if x.thumbnail %}
 					<div class="col" style="margin:auto"><a href="/entry/{{x.id}}"><img class="thumbnail float-left" src="{{ x.thumbnail }}"></a></div>

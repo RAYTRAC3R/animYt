@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.template import loader
 
-from .models import Creator, Entry
+from .models import Creator, Entry, Character
 
 def index(request):
     context = {
@@ -27,9 +27,20 @@ def entry(request, entry_id):
     for x in list(entry_object.related_memes.all()):
         if x != entry_object and x!= entry_object.original_meme:
             related_objects.append(x)
+    characters = []
+    for x in list(entry_object.characters.all()):
+        characters.append(x)
     context = {
         'entry': entry_object,
         'related_entries': related_objects,
-        'by_creator': list(entry_object.creator.memes_made.all())
+        'characters': characters
     }
     return render(request, "entry.html", context)
+    
+def character(request, character_id):
+    character_object = get_object_or_404(Character, pk=character_id)
+    context = {
+        'character': character_object,
+        # 'memes': list(character_object.memes_made.all())
+    }
+    return render(request, "character.html", context)

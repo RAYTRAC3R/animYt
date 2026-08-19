@@ -34,7 +34,17 @@ class Creator(models.Model):
     def __str__(self):
         return self.name
 
-
+class Character(models.Model):
+    name = models.CharField(max_length=320)
+    added_date = models.DateTimeField("addition date")
+    thumbnail = models.URLField(null=True, blank=True)
+    link = models.URLField("more info")
+    creator = models.ForeignKey(Creator, on_delete=models.SET_NULL, null=True, related_name="characters")
+    
+    def __str__(self):
+        return self.name + " by " + self.creator.name
+    def was_added_recently(self):
+        return self.added_date >= timezone.now() - datetime.timedelta(days=1)
 
 class Entry(models.Model):
     MEME = "Animation Meme"
@@ -51,6 +61,7 @@ class Entry(models.Model):
         default=MEME,
     )
     creator = models.ForeignKey(Creator, on_delete=models.SET_NULL, null=True, related_name="memes_made")
+    characters = models.ManyToManyField(Character, blank=True, related_name="meme_appearances")
     entry_name = models.CharField(max_length=320)
     added_date = models.DateTimeField("addition date")
     upload_date = models.DateField("original upload date")
@@ -58,6 +69,7 @@ class Entry(models.Model):
     link = models.URLField()
     original_meme = models.ForeignKey('self', blank=True, on_delete=models.SET_NULL, null=True, related_name='derived_meme')
     related_memes = models.ManyToManyField('self', blank=True)
+    
     def __str__(self):
         return self.entry_name + " by " + self.creator.name
     def was_added_recently(self):
